@@ -9,6 +9,14 @@ app.get('/ads', (request, response) => {
       id: 1,
       name: 'Nikolas',
     },
+    {
+      id: 2,
+      name: 'Kiki',
+    },
+    {
+      id: 3,
+      name: 'Zuzu',
+    },
   ])
 })
 
