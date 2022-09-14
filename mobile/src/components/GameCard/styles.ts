@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   footer: {
     width: "100%",
     height: 102,
-    padding: 16,
+    padding: 20,
     justifyContent: "flex-end",
   },
   name: {
