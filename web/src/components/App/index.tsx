@@ -2,6 +2,8 @@ import "../../styles/main.css";
 
 import logoImg from "../../assets/logo.svg";
 
+import { MagnifyingGlassPlus } from "phosphor-react";
+
 export const App = () => {
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
@@ -92,7 +94,8 @@ export const App = () => {
             </span>
           </div>
 
-          <button className="py-3 px-4 bg-violet-500 text-white rounded hover:bg-violet-600 active:bg-violet-700 transition">
+          <button className="flex items-center gap-3 py-3 px-4 bg-violet-500 text-white rounded hover:bg-violet-600 active:bg-violet-700 transition">
+            <MagnifyingGlassPlus size={24} />
             Publicar anúncio
           </button>
         </div>
