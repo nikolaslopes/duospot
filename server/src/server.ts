@@ -1,7 +1,9 @@
 import express, { request } from "express";
+import { Ad, AdPOST } from "./@types/ad";
 import { prisma } from "./database/client";
 
 const app = express();
+app.use(express.json());
 
 app.get("/games", async (request, response) => {
   const games = await prisma.game.findMany({
@@ -17,10 +19,24 @@ app.get("/games", async (request, response) => {
   return response.json(games);
 });
 
-app.post("/ads", async (request, response) => {
-  const ads = await prisma.ad.findMany();
+app.post("/games/:id/ads", async (request, response) => {
+  const gameId = request.params.id;
+  const body: AdPOST = request.body;
 
-  return response.status(201).json(ads);
+  const ad = await prisma.ad.create({
+    data: {
+      gameId: gameId,
+      name: body.name,
+      yearsPlaying: body.yearsPlaying,
+      discord: body.discord,
+      weekDays: body.weekDays.join(","),
+      hourStart: body.hourStart,
+      hourdEnd: body.hourdEnd,
+      useVoiceChannel: body.useVoiceChannel,
+    },
+  });
+
+  return response.status(201).json(body);
 });
 
 app.get("/games/:id/ads", async (request, response) => {
@@ -44,11 +60,29 @@ app.get("/games/:id/ads", async (request, response) => {
     },
   });
 
-  return response.json(ads);
+  const adsFormatted = ads.map((ad) => {
+    return {
+      ...ad,
+      weekDays: ad.weekDays.split(","),
+    };
+  });
+
+  return response.json(adsFormatted);
 });
 
-app.get("/ads/:id/discord", (request, response) => {
-  return response.json([]);
+app.get("/ads/:id/discord", async (request, response) => {
+  const adId = request.params.id;
+
+  const ad = await prisma.ad.findUniqueOrThrow({
+    select: {
+      discord: true,
+    },
+    where: {
+      id: adId,
+    },
+  });
+
+  return response.json(ad);
 });
 
 app.listen(3333);
