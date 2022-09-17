@@ -1,23 +1,26 @@
-import express from 'express'
+import express from "express";
 
-const app = express()
+const app = express();
 
-app.get('/ads', (request, response) => {
-  console.log('access')
+app.get("/games/:id/ads", (request, response) => {
+  const gameId = request.params.id;
+
+  return response.send(gameId);
+
   return response.json([
     {
       id: 1,
-      name: 'Nikolas',
+      name: "Nikolas",
     },
     {
       id: 2,
-      name: 'Kiki',
+      name: "Kiki",
     },
     {
       id: 3,
-      name: 'Zuzu',
+      name: "Zuzu",
     },
-  ])
-})
+  ]);
+});
 
-app.listen(3333)
+app.listen(3333);
