@@ -5,8 +5,8 @@ export type Ad = {
   yearsPlaying: number;
   discord: string;
   weekDays: number[];
-  hourStart: number;
-  hourdEnd: number;
+  hourStart: string;
+  hourEnd: string;
   useVoiceChannel: boolean;
   createdAt: Date;
 };
@@ -19,6 +19,6 @@ export type AdPOST = Pick<
   | "discord"
   | "weekDays"
   | "hourStart"
-  | "hourdEnd"
+  | "hourEnd"
   | "useVoiceChannel"
 >;
