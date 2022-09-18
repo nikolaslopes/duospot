@@ -4,7 +4,24 @@ import logoImg from "../../assets/logo.svg";
 
 import { MagnifyingGlassPlus } from "phosphor-react";
 
+import { useEffect, useState } from "react";
+import { GameBanner } from "../../styles/GameBanner";
+import { GameBannerResponse } from "../../@types/global";
+
 export const App = () => {
+  const [games, setGames] = useState<GameBannerResponse[]>([]);
+
+  async function fetchGames() {
+    const response = await fetch("http://localhost:3333/games");
+    const data: GameBannerResponse[] = await response.json();
+
+    setGames(data);
+  }
+
+  useEffect(() => {
+    fetchGames();
+  }, []);
+
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
       <img src={logoImg} alt="logo" />
@@ -18,69 +35,14 @@ export const App = () => {
       </h1>
 
       <section className="grid grid-cols-6 gap-6 mt-16">
-        <a href="" className="relative rounded-lg overflow-hidden">
-          <img src="./apex.png" alt="" />
-
-          <div className="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0">
-            <strong className="font-bold text-white block">
-              League of legends
-            </strong>
-            <span className="text-zinc-300 text-sm block">4 anúncios</span>
-          </div>
-        </a>
-
-        <a href="" className="relative rounded-lg overflow-hidden">
-          <img src="./cs.png" alt="" />
-
-          <div className="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0">
-            <strong className="font-bold text-white block">
-              League of legends
-            </strong>
-            <span className="text-zinc-300 text-sm block">4 anúncios</span>
-          </div>
-        </a>
-
-        <a href="" className="relative rounded-lg overflow-hidden">
-          <img src="./dota.png" alt="" />
-
-          <div className="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0">
-            <strong className="font-bold text-white block">
-              League of legends
-            </strong>
-            <span className="text-zinc-300 text-sm block">4 anúncios</span>
-          </div>
-        </a>
-
-        <a href="" className="relative rounded-lg overflow-hidden">
-          <img src="./forts.png" alt="" />
-
-          <div className="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0">
-            <strong className="font-bold text-white block">Fortnite</strong>
-            <span className="text-zinc-300 text-sm block">4 anúncios</span>
-          </div>
-        </a>
-
-        <a href="" className="relative rounded-lg overflow-hidden">
-          <img src="./lol.png" alt="" />
-
-          <div className="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0">
-            <strong className="font-bold text-white block">
-              League of legends
-            </strong>
-            <span className="text-zinc-300 text-sm block">4 anúncios</span>
-          </div>
-        </a>
-
-        <a href="" className="relative rounded-lg overflow-hidden">
-          <img src="./wow.png" alt="" />
-
-          <div className="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0">
-            <strong className="font-bold text-white block">
-              League of legends
-            </strong>
-            <span className="text-zinc-300 text-sm block">4 anúncios</span>
-          </div>
-        </a>
+        {games.map((game) => (
+          <GameBanner
+            key={game.id}
+            title={game.title}
+            bannerUrl={game.bannerUrl}
+            adsCount={game._count.ads}
+          />
+        ))}
       </section>
 
       <section className="mt-8 pt-1 bg-purple-yellow-gradient self-stretch rounded-lg overflow-hidden">
