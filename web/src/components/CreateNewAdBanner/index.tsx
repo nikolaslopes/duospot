@@ -2,9 +2,6 @@ import { MagnifyingGlassPlus } from "phosphor-react";
 import { useGames } from "../../services/useGames";
 
 export const CreateNewAdBanner = () => {
-  const { data } = useGames;
-
-  console.log(data);
   return (
     <section className="mt-8 pt-1 bg-purple-yellow-gradient self-stretch rounded-lg overflow-hidden">
       <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
