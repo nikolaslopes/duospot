@@ -1,10 +1,14 @@
 import express from "express";
-import { AdPOST } from "./@types/ad";
+import cors from "cors";
+
+import { AdGET, AdPOST } from "./@types/ad";
 import { prisma } from "./database/client";
 import { convertHourStringToMinutes } from "./utils/convert-hour-string-to-minutes";
+import { convertMinutesToHourString } from "./utils/convert-minutes-to-hour-string";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get("/games", async (request, response) => {
   const games = await prisma.game.findMany({
@@ -43,7 +47,7 @@ app.post("/games/:id/ads", async (request, response) => {
 app.get("/games/:id/ads", async (request, response) => {
   const id = request.params.id;
 
-  const ads = await prisma.ad.findMany({
+  const ads: AdGET[] = await prisma.ad.findMany({
     select: {
       id: true,
       name: true,
@@ -65,6 +69,8 @@ app.get("/games/:id/ads", async (request, response) => {
     return {
       ...ad,
       weekDays: ad.weekDays.split(","),
+      hourStart: convertMinutesToHourString(ad.hourStart),
+      hourEnd: convertMinutesToHourString(ad.hourEnd),
     };
   });
 

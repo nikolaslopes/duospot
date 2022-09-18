@@ -22,3 +22,12 @@ export type AdPOST = Pick<
   | "hourEnd"
   | "useVoiceChannel"
 >;
+
+export type AdGET = Pick<
+  Ad,
+  "id" | "name" | "useVoiceChannel" | "yearsPlaying"
+> & {
+  hourStart: number;
+  hourEnd: number;
+  weekDays: string;
+};
