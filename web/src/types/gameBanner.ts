@@ -4,9 +4,11 @@ export interface GameBannerProps {
   adsCount: number;
 }
 
-export type GameBannerResponseData = Array<{
-  id: string;
-  _count: {
-    ads: number;
-  } & Pick<GameBannerProps, "title" | "bannerUrl">;
-}>;
+export type GameBannerResponseData = Array<
+  {
+    id: string;
+    _count: {
+      ads: number;
+    };
+  } & Pick<GameBannerProps, "title" | "bannerUrl">
+>;
