@@ -1,10 +1,7 @@
-import "../../styles/main.css";
-
-import { CreateNewAdBanner } from "../CreateNewAdBanner";
-import { GameBanner } from "../GameBanner";
+import "../../assets/styles/main.css";
 
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "../../services/client";
+import { queryClient } from "../../services/queryClient";
 import { Routes } from "../../routes";
 
 export const App = () => {

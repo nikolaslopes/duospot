@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { GameBannerResponse } from "../@types/global";
+import { api } from "../services/api";
+import { GameBannerResponse } from "../types/global";
 
 export const fetchGames = async () => {
-  const response = await fetch("http://localhost:3333/games");
-  const data: GameBannerResponse[] = await response.json();
+  const response = await api.get("/games");
+  const data: GameBannerResponse[] = response.data;
 
   return data;
 };
