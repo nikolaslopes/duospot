@@ -1,7 +1,8 @@
 import { ImageBackground } from "react-native";
-import { styles } from "./styles";
+
 import { BackgroundProps } from "./types";
 
+import { styles } from "./styles";
 import backgroundImg from "../../assets/background-galaxy.png";
 
 export const Background = ({ children }: BackgroundProps) => {
