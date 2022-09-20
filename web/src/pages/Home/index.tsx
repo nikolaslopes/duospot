@@ -1,7 +1,8 @@
-import logoImg from "../../assets/logo.svg";
-import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
 import { GameBanner } from "../../components/GameBanner";
+import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
 import { useGamesData } from "../../hooks/useGames";
+
+import logoImg from "../../assets/logo.svg";
 
 export const Home = () => {
   const games = useGamesData();

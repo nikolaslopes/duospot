@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { api } from "../services/api";
+
 import { GameBannerResponseData } from "../types/gameBanner";
+import { api } from "../services/api";
 
 export const fetchGames = async () => {
   const response = await api.get("/games");

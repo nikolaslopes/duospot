@@ -3,6 +3,7 @@ import {
   Routes as RoutesWrapper,
   Route,
 } from "react-router-dom";
+
 import { Home } from "../pages/Home";
 
 export const Routes = () => {
