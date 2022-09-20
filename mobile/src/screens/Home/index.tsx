@@ -1,10 +1,11 @@
 import { View, Image, FlatList } from "react-native";
 
-import logoImg from "../../assets/logo-nlw-esports.png";
 import { GameCard } from "../../components/GameCard";
 import { Heading } from "../../components/Heading";
 import { GAMES } from "../../utils/games";
+
 import { styles } from "./styles";
+import logoImg from "../../assets/images/logo-nlw-esports.png";
 
 export const Home = () => {
   return (

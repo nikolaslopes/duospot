@@ -1,8 +1,10 @@
 import { ImageBackground, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { styles } from "./styles";
+
 import { IGameCard } from "./types";
-import { THEME } from "../../theme";
+
+import { THEME } from "../../assets/theme";
+import { styles } from "./styles";
 
 export const GameCard = ({ data, ...rest }: IGameCard) => {
   return (
