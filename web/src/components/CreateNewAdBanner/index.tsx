@@ -1,5 +1,4 @@
 import { MagnifyingGlassPlus } from "phosphor-react";
-import { useGames } from "../../services/useGames";
 
 export const CreateNewAdBanner = () => {
   return (
