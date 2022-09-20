@@ -23,8 +23,8 @@ export const GameBanner = ({
       },
       {
         scale: 1,
-        duration: 1.2,
-        ease: "bounce",
+        duration: 2.5,
+        ease: "power2.out",
       }
     );
   }, []);
