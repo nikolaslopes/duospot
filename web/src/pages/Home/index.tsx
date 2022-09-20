@@ -1,6 +1,7 @@
+import { useGamesData } from "../../hooks/useGames";
 import { GameBanner } from "../../components/GameBanner";
 import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
-import { useGamesData } from "../../hooks/useGames";
+import { TextSkeleton } from "../../components/Loaders/TextSkeleton";
 
 import logoImg from "../../assets/logo.svg";
 
@@ -10,7 +11,7 @@ export const Home = () => {
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
-      <img src={logoImg} alt="logo" />
+      <img src={logoImg} alt="logo" className="animate-bounce" />
 
       <h1 className="text-6xl text-white font-black mt-20">
         Seu{" "}
@@ -20,6 +21,8 @@ export const Home = () => {
         está aqui
       </h1>
 
+      <TextSkeleton />
+
       <section className="grid grid-cols-6 gap-6 mt-16">
         {data?.map((game) => (
           <GameBanner
@@ -27,6 +30,7 @@ export const Home = () => {
             title={game.title}
             bannerUrl={game.bannerUrl}
             adsCount={game._count.ads}
+            isBannerLoading={games.isLoading ?? true}
           />
         ))}
       </section>
