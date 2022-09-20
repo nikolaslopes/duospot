@@ -1,9 +1,9 @@
+import { useGamesData } from "../../hooks/useGames";
 import { GameBanner } from "../../components/GameBanner";
 import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
-import { useGamesData } from "../../hooks/useGames";
+import { TextSkeleton } from "../../components/Loaders/TextSkeleton";
 
 import logoImg from "../../assets/logo.svg";
-import { TextSkeleton } from "../../components/Loaders/TextSkeleton";
 
 export const Home = () => {
   const games = useGamesData();

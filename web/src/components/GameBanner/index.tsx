@@ -11,13 +11,13 @@ export const GameBanner = ({
   adsCount,
   isBannerLoading,
 }: GameBannerProps) => {
-  const boxRef = useRef();
+  const boxRef = useRef(null);
 
   useEffect(() => {
-    const boxes = [boxRef.current];
+    const box = [boxRef.current];
 
     gsap.fromTo(
-      boxes,
+      box,
       {
         scale: 0,
       },

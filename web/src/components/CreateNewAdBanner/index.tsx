@@ -1,8 +1,10 @@
 import { MagnifyingGlassPlus } from "phosphor-react";
 
+import { BoxAnimated } from "../Animations/BoxAnimated";
+
 export const CreateNewAdBanner = () => {
   return (
-    <section className="mt-8 pt-1 bg-purple-yellow-gradient self-stretch rounded-lg overflow-hidden">
+    <BoxAnimated className="mt-8 pt-1 bg-purple-yellow-gradient self-stretch rounded-lg overflow-hidden">
       <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
         <div>
           <strong className="text-2xl text-white font-black block">
@@ -18,6 +20,6 @@ export const CreateNewAdBanner = () => {
           Publicar anúncio
         </button>
       </div>
-    </section>
+    </BoxAnimated>
   );
 };
