@@ -1,7 +1,6 @@
-import { GameBannerProps } from "../../@types/global";
+import { GameBannerProps } from "../../types/gameBanner";
 
 export const GameBanner = ({ bannerUrl, title, adsCount }: GameBannerProps) => {
-  console.log(adsCount);
   return (
     <a href="" className="relative rounded-lg overflow-hidden">
       <img src={bannerUrl} alt="" />

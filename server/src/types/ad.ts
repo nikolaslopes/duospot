@@ -11,7 +11,7 @@ export type Ad = {
   createdAt: Date;
 };
 
-export type AdPOST = Pick<
+export type AdCreateData = Pick<
   Ad,
   | "gameId"
   | "name"
@@ -23,11 +23,10 @@ export type AdPOST = Pick<
   | "useVoiceChannel"
 >;
 
-export type AdGET = Pick<
-  Ad,
-  "id" | "name" | "useVoiceChannel" | "yearsPlaying"
-> & {
-  hourStart: number;
-  hourEnd: number;
-  weekDays: string;
-};
+export type Ads = Array<
+  {
+    hourStart: number;
+    hourEnd: number;
+    weekDays: string;
+  } & Pick<Ad, "id" | "name" | "useVoiceChannel" | "yearsPlaying">
+>;

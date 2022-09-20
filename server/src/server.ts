@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import { AdGET, AdPOST } from "./@types/ad";
+import { AdCreateData, Ads } from "./types/ad";
 import { prisma } from "./database/client";
 import { convertHourStringToMinutes } from "./utils/convert-hour-string-to-minutes";
 import { convertMinutesToHourString } from "./utils/convert-minutes-to-hour-string";
@@ -26,7 +26,7 @@ app.get("/games", async (request, response) => {
 
 app.post("/games/:id/ads", async (request, response) => {
   const gameId = request.params.id;
-  const body: AdPOST = request.body;
+  const body: AdCreateData = request.body;
 
   const ad = await prisma.ad.create({
     data: {
@@ -47,7 +47,7 @@ app.post("/games/:id/ads", async (request, response) => {
 app.get("/games/:id/ads", async (request, response) => {
   const id = request.params.id;
 
-  const ads: AdGET[] = await prisma.ad.findMany({
+  const ads: Ads = await prisma.ad.findMany({
     select: {
       id: true,
       name: true,
