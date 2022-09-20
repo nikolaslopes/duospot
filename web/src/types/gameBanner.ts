@@ -2,6 +2,7 @@ export interface GameBannerProps {
   title: string;
   bannerUrl: string;
   adsCount: number;
+  isBannerLoading: boolean;
 }
 
 export type GameBannerResponseData = Array<
