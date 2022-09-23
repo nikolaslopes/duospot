@@ -2,7 +2,7 @@ import { LabelProps } from "./types";
 
 export const Label = ({ title, ...rest }: LabelProps) => {
   return (
-    <label {...rest} htmlFor="" className="semibold">
+    <label {...rest} className="semibold">
       {title}
     </label>
   );
