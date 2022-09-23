@@ -117,20 +117,9 @@ export const Home = () => {
               </div>
 
               <footer className="mt-4 flex justify-end gap-4">
-                <Dialog.Close
-                  type="button"
-                  className="bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600 transition-all"
-                >
-                  Cancelar
-                </Dialog.Close>
+                <ButtonAction variant="gray" title="Cancelar" />
 
-                <ButtonAction />
-                <button
-                  type="submit"
-                  className="bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600 transition-all"
-                >
-                  <GameController className="w-6 h-6" /> Encontrar duo
-                </button>
+                <ButtonAction variant="purple" title="Encontrar duo" />
               </footer>
             </form>
           </Dialog.Content>
