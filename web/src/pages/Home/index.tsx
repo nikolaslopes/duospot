@@ -12,6 +12,7 @@ import { FormGroup } from "../../components/Form/FormGroup";
 import { Label } from "../../components/Form/Label";
 import { weekDays } from "../../utils/mocks/weekDays";
 import { ButtonDay } from "../../components/Form/ButtonDay";
+import { ButtonAction } from "../../components/Form/ButtonAction";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
@@ -122,6 +123,8 @@ export const Home = () => {
                 >
                   Cancelar
                 </Dialog.Close>
+
+                <ButtonAction />
                 <button
                   type="submit"
                   className="bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600 transition-all"

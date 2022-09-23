@@ -1,4 +1,3 @@
-import { FormGroup } from "../FormGroup";
 import { InputProps } from "./types";
 
 export const Input = ({ ...rest }: InputProps) => {
