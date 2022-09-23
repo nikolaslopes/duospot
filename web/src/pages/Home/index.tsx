@@ -8,6 +8,10 @@ import { BoxAnimated } from "../../components/Animations/BoxAnimated";
 import logoImg from "../../assets/logo.svg";
 import { GameController } from "phosphor-react";
 import { Input } from "../../components/Form/Input";
+import { FormGroup } from "../../components/Form/FormGroup";
+import { Label } from "../../components/Form/Label";
+import { weekDays } from "../../utils/mocks/weekDays";
+import { ButtonDay } from "../../components/Form/ButtonDay";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
@@ -50,62 +54,52 @@ export const Home = () => {
               Publique um anúncio
             </Dialog.Title>
             <form className="mt-8 flex flex-col gap-4">
-              <Input
-                id="game"
-                labelText="Qual o game?"
-                placeholder="Selecione o game que deseja jogar"
-              />
+              <FormGroup>
+                <Label htmlFor="game" title="Qual o game?" />
+                <Input
+                  id="game"
+                  placeholder="Selecione o game que deseja jogar"
+                />
+              </FormGroup>
 
-              <Input
-                id="game"
-                labelText="Seu nome (ou nickname)"
-                placeholder="Como te chamam dentro do game?"
-              />
+              <FormGroup>
+                <Label htmlFor="game" title="Qual o game?" />
+                <Input
+                  id="nickname"
+                  placeholder="Como te chamam dentro do game?"
+                />
+              </FormGroup>
 
               <div className="grid grid-cols-2 gap-6">
-                <Input
-                  id="yearsPlaying"
-                  labelText="Joga há quantos anos?"
-                  type="number"
-                  placeholder="Tudo bem ser ZERO"
-                />
+                <FormGroup>
+                  <Label htmlFor="yearsPlaying" title="Joga há quantos anos?" />
+                  <Input
+                    id="yearsPlaying"
+                    type="number"
+                    placeholder="Tudo bem ser ZERO"
+                  />
+                </FormGroup>
 
-                <Input
-                  id="discord"
-                  labelText="Qual seu Discord?"
-                  type="text"
-                  placeholder="Usuario#000"
-                />
+                <FormGroup>
+                  <Label htmlFor="discord" title="Qual seu Discord?" />
+                  <Input id="discord" type="text" placeholder="Usuario#000" />
+                </FormGroup>
               </div>
 
               <div className="flex gap-6">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="weekDays">Quando costuma jogar?</label>
+                <FormGroup>
+                  <Label htmlFor="weekDays" title="Quando costuma jogar?" />
 
                   <div className="grid grid-cols-4 gap-2">
-                    <button title="Domingo" className="w-8 h-8 bg-zinc-900">
-                      D
-                    </button>
-                    <button title="Segunda" className="w-8 h-8 bg-zinc-900">
-                      S
-                    </button>
-                    <button title="Terça" className="w-8 h-8 bg-zinc-900">
-                      T
-                    </button>
-                    <button title="Quarta" className="w-8 h-8 bg-zinc-900">
-                      Q
-                    </button>
-                    <button title="Quinta" className="w-8 h-8 bg-zinc-900">
-                      Q
-                    </button>
-                    <button title="Sexta" className="w-8 h-8 bg-zinc-900">
-                      S
-                    </button>
-                    <button title="Sábado" className="w-8 h-8 bg-zinc-900">
-                      S
-                    </button>
+                    {weekDays.map((weekDay) => (
+                      <ButtonDay
+                        key={weekDay.title}
+                        title={weekDay.title}
+                        text={weekDay.text}
+                      />
+                    ))}
                   </div>
-                </div>
+                </FormGroup>
 
                 <div className="flex flex-col gap-2 flex-1">
                   <label htmlFor="hourStart">Qual horário do dia?</label>
