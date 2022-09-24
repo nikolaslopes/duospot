@@ -45,80 +45,72 @@ export const Home = () => {
         ))}
       </section>
 
-      <Modal triggerComponent={<CreateNewAdBanner />}>
-        <Dialog.Content className="fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25">
-          <Dialog.Title className="text-3xl font-black">
-            Publique um anúncio
-          </Dialog.Title>
-          <form className="mt-8 flex flex-col gap-4">
+      <Modal
+        triggerComponent={<CreateNewAdBanner />}
+        title="Publique um anúncio"
+      >
+        <form className="mt-8 flex flex-col gap-4">
+          <FormGroup>
+            <Label htmlFor="game" title="Qual o game?" />
+            <Input id="game" placeholder="Selecione o game que deseja jogar" />
+          </FormGroup>
+
+          <FormGroup>
+            <Label htmlFor="nickname" title="Qual o game?" />
+            <Input id="nickname" placeholder="Como te chamam dentro do game?" />
+          </FormGroup>
+
+          <div className="grid grid-cols-2 gap-6">
             <FormGroup>
-              <Label htmlFor="game" title="Qual o game?" />
+              <Label htmlFor="yearsPlaying" title="Joga há quantos anos?" />
               <Input
-                id="game"
-                placeholder="Selecione o game que deseja jogar"
+                id="yearsPlaying"
+                type="number"
+                placeholder="Tudo bem ser ZERO"
               />
             </FormGroup>
 
             <FormGroup>
-              <Label htmlFor="nickname" title="Qual o game?" />
-              <Input
-                id="nickname"
-                placeholder="Como te chamam dentro do game?"
-              />
+              <Label htmlFor="discord" title="Qual seu Discord?" />
+              <Input id="discord" type="text" placeholder="Usuario#000" />
+            </FormGroup>
+          </div>
+
+          <div className="flex gap-6">
+            <FormGroup>
+              <Label htmlFor="weekDays" title="Quando costuma jogar?" />
+
+              <div className="grid grid-cols-4 gap-2">
+                {weekDays.map((weekDay) => (
+                  <ButtonDay
+                    key={weekDay.title}
+                    title={weekDay.title}
+                    text={weekDay.text}
+                  />
+                ))}
+              </div>
             </FormGroup>
 
-            <div className="grid grid-cols-2 gap-6">
-              <FormGroup>
-                <Label htmlFor="yearsPlaying" title="Joga há quantos anos?" />
-                <Input
-                  id="yearsPlaying"
-                  type="number"
-                  placeholder="Tudo bem ser ZERO"
-                />
-              </FormGroup>
+            <FormGroup>
+              <Label htmlFor="hourStart" title="Qual horário do dia?" />
+              <div className="grid grid-cols-2 gap-2">
+                <Input id="hourStart" type="time" placeholder="De" />
+                <Input id="hourEnd" type="time" placeholder="Até" />
+              </div>
+            </FormGroup>
+          </div>
 
-              <FormGroup>
-                <Label htmlFor="discord" title="Qual seu Discord?" />
-                <Input id="discord" type="text" placeholder="Usuario#000" />
-              </FormGroup>
-            </div>
+          <div className="mt-2 flex items-center gap-2 text-sm">
+            <Input id="checkbox" type="checkbox" />
+            Costumo me conectar ao chat de voz
+          </div>
 
-            <div className="flex gap-6">
-              <FormGroup>
-                <Label htmlFor="weekDays" title="Quando costuma jogar?" />
+          <footer className="mt-4 flex justify-end gap-4">
+            <ButtonAction variant="gray" title="Cancelar" />
 
-                <div className="grid grid-cols-4 gap-2">
-                  {weekDays.map((weekDay) => (
-                    <ButtonDay
-                      key={weekDay.title}
-                      title={weekDay.title}
-                      text={weekDay.text}
-                    />
-                  ))}
-                </div>
-              </FormGroup>
-
-              <FormGroup>
-                <Label htmlFor="hourStart" title="Qual horário do dia?" />
-                <div className="grid grid-cols-2 gap-2">
-                  <Input id="hourStart" type="time" placeholder="De" />
-                  <Input id="hourEnd" type="time" placeholder="Até" />
-                </div>
-              </FormGroup>
-            </div>
-
-            <div className="mt-2 flex items-center gap-2 text-sm">
-              <Input id="checkbox" type="checkbox" />
-              Costumo me conectar ao chat de voz
-            </div>
-
-            <footer className="mt-4 flex justify-end gap-4">
-              <ButtonAction variant="gray" title="Cancelar" />
-
-              <ButtonAction variant="purple" title="Encontrar duo" />
-            </footer>
-          </form>
-        </Dialog.Content>
+            <ButtonAction variant="purple" title="Encontrar duo" />
+          </footer>
+        </form>
       </Modal>
     </div>
   );
