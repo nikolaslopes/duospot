@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-import { View, Image, FlatList } from "react-native";
+import { Image, FlatList } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
 
-import { GameCard } from "../../components/GameCard";
+import { FetchGameCardsResponseProps } from "../../types/gameCard";
+import { IGame } from "../../types/game";
+
+import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
+import { GameCard } from "../../components/GameCard";
 
 import { styles } from "./styles";
 import logoImg from "../../assets/images/logo-nlw-esports.png";
-import { FetchGameCardsResponseProps } from "../../types/gameCard";
 
 async function fetchGames() {
   const response = await fetch("http://127.0.0.1:3333/games");
@@ -16,6 +21,8 @@ async function fetchGames() {
 }
 
 export const Home = () => {
+  const navigation = useNavigation();
+
   const [games, setGames] = useState<FetchGameCardsResponseProps>([]);
 
   async function updateGamesData() {
@@ -24,34 +31,47 @@ export const Home = () => {
     setGames(data);
   }
 
+  function handleOpenGame({ id, title, bannerUrl }: IGame) {
+    navigation.navigate("game", { id, title, bannerUrl });
+  }
+
   useEffect(() => {
     updateGamesData();
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Image source={logoImg} style={styles.logo} />
+    <Background>
+      <SafeAreaView style={styles.container}>
+        <Image source={logoImg} style={styles.logo} />
 
-      <Heading
-        title="Encontre seu duo!"
-        subtitle="Selecione o game que deseja jogar..."
-      />
+        <Heading
+          title="Encontre seu duo!"
+          subtitle="Selecione o game que deseja jogar..."
+        />
 
-      <FlatList
-        data={games}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <GameCard
-            title={item.title}
-            bannerUrl={item.bannerUrl}
-            adsCount={item._count.ads}
-            isBannerLoading={true}
-          />
-        )}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.contentList}
-      />
-    </View>
+        <FlatList
+          data={games}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <GameCard
+              title={item.title}
+              bannerUrl={item.bannerUrl}
+              adsCount={item._count.ads}
+              isBannerLoading={true}
+              onPress={() =>
+                handleOpenGame({
+                  id: item.id,
+                  title: item.title,
+                  bannerUrl: item.bannerUrl,
+                })
+              }
+            />
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.contentList}
+        />
+      </SafeAreaView>
+    </Background>
   );
 };
