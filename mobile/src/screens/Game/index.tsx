@@ -12,7 +12,7 @@ import { IGame } from "../../types/game";
 import { THEME } from "../../assets/theme";
 import { styles } from "./styles";
 import logoImg from "../../assets/images/logo-nlw-esports.png";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FetchDuoResponseProps } from "../../types/duo";
 
 export const Game = () => {
@@ -70,6 +70,8 @@ export const Game = () => {
           renderItem={({ item }) => <DuoCard data={item} />}
           horizontal
           showsHorizontalScrollIndicator={false}
+          style={styles.containerList}
+          contentContainerStyle={styles.contentList}
         />
       </SafeAreaView>
     </Background>

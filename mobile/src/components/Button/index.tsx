@@ -6,9 +6,9 @@ import { IButton } from "./types";
 import { THEME } from "../../assets/theme";
 import { styles } from "./styles";
 
-export const Button = ({ title }: IButton) => {
+export const Button = ({ title, onConnect }: IButton) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onConnect}>
       <GameController color={THEME.COLORS.TEXT} />
 
       <Text style={styles.text}>{title}</Text>

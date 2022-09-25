@@ -28,7 +28,7 @@ export const DuoCard = ({ data }: DuoProps) => {
         }
       />
 
-      <Button title="Conectar" />
+      <Button title="Conectar" onConnect={() => {}} />
     </View>
   );
 };
