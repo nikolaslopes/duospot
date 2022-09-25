@@ -13,7 +13,6 @@ export const GameCard = ({
   isBannerLoading,
   ...rest
 }: IGameCard) => {
-  console.log();
   return (
     <TouchableOpacity style={styles.container} {...rest}>
       <ImageBackground style={styles.cover} source={{ uri: bannerUrl }}>
