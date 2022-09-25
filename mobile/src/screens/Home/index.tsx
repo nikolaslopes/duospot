@@ -6,17 +6,17 @@ import { Heading } from "../../components/Heading";
 
 import { styles } from "./styles";
 import logoImg from "../../assets/images/logo-nlw-esports.png";
-import { CardGameProps } from "../../types/gameCard";
+import { FetchGameCardsResponseProps } from "../../types/gameCard";
 
 async function fetchGames() {
   const response = await fetch("http://127.0.0.1:3333/games");
-  const data: CardGameProps[] = await response.json();
+  const data: FetchGameCardsResponseProps = await response.json();
 
   return data;
 }
 
 export const Home = () => {
-  const [games, setGames] = useState<CardGameProps[]>([]);
+  const [games, setGames] = useState<FetchGameCardsResponseProps>([]);
 
   async function updateGamesData() {
     const data = await fetchGames();
