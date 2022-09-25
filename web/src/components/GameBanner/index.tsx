@@ -1,7 +1,7 @@
 import { MouseEvent, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-import { GameBannerProps } from "../../types/gameBanner";
+import { CardGameProps } from "../../types/gameBanner";
 import { ImageSkeleton } from "../Loaders/ImageSkeleton";
 import { TextSkeleton } from "../Loaders/TextSkeleton";
 
@@ -10,7 +10,7 @@ export const GameBanner = ({
   title,
   adsCount,
   isBannerLoading,
-}: GameBannerProps) => {
+}: CardGameProps) => {
   const boxRef = useRef(null);
 
   useEffect(() => {
