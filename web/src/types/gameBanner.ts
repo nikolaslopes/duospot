@@ -1,15 +1,15 @@
-export interface GameBannerProps {
+export interface CardGameProps {
   title: string;
   bannerUrl: string;
   adsCount: number;
   isBannerLoading: boolean;
 }
 
-export type GameBannerResponseData = Array<
+export type CardGamesResponseData = Array<
   {
     id: string;
     _count: {
       ads: number;
     };
-  } & Pick<GameBannerProps, "title" | "bannerUrl">
+  } & Pick<CardGameProps, "title" | "bannerUrl">
 >;
