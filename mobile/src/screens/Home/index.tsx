@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Image, FlatList } from "react-native";
+import { Image, FlatList } from "react-native";
 
 import { GameCard } from "../../components/GameCard";
 import { Heading } from "../../components/Heading";
@@ -7,6 +7,7 @@ import { Heading } from "../../components/Heading";
 import { styles } from "./styles";
 import logoImg from "../../assets/images/logo-nlw-esports.png";
 import { FetchGameCardsResponseProps } from "../../types/gameCard";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 async function fetchGames() {
   const response = await fetch("http://127.0.0.1:3333/games");
@@ -29,7 +30,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image source={logoImg} style={styles.logo} />
 
       <Heading
@@ -52,6 +53,6 @@ export const Home = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentList}
       />
-    </View>
+    </SafeAreaView>
   );
 };
