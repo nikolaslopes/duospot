@@ -1,4 +1,5 @@
 import { TouchableOpacityProps } from "react-native";
+
 import { GameCardProps } from "../../types/gameCard";
 
 export type IGameCard = Pick<
