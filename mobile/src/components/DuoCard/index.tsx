@@ -6,6 +6,7 @@ import { DuoInfo } from "../DuoInfo";
 
 import { THEME } from "../../assets/theme";
 import { styles } from "./styles";
+import { Button } from "../Button";
 
 export const DuoCard = ({ data }: DuoProps) => {
   return (
@@ -26,6 +27,8 @@ export const DuoCard = ({ data }: DuoProps) => {
           data.useVoiceChannel ? THEME.COLORS.SUCCESS : THEME.COLORS.ALERT
         }
       />
+
+      <Button title="Conectar" />
     </View>
   );
 };
