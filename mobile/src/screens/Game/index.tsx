@@ -5,6 +5,7 @@ import { Entypo } from "@expo/vector-icons";
 
 import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
+import { DuoCard } from "../../components/DuoCard";
 
 import { IGame } from "../../types/game";
 
@@ -46,6 +47,8 @@ export const Game = () => {
         />
 
         <Heading title={game.title} subtitle="Conecte-se e comece a jogar!" />
+
+        <DuoCard />
       </SafeAreaView>
     </Background>
   );
