@@ -40,7 +40,14 @@ export const Home = () => {
       <FlatList
         data={games}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <GameCard data={item} />}
+        renderItem={({ item }) => (
+          <GameCard
+            title={item.title}
+            bannerUrl={item.bannerUrl}
+            adsCount={item._count.ads}
+            isBannerLoading={true}
+          />
+        )}
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentList}

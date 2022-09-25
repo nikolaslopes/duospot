@@ -16,7 +16,7 @@ export const GameCard = ({
   console.log();
   return (
     <TouchableOpacity style={styles.container} {...rest}>
-      <ImageBackground style={styles.cover} source={bannerUrl}>
+      <ImageBackground style={styles.cover} source={{ uri: bannerUrl }}>
         <LinearGradient colors={THEME.COLORS.FOOTER} style={styles.footer}>
           <Text style={styles.name}>{title}</Text>
 
