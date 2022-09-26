@@ -2,7 +2,7 @@ export interface GameCardProps {
   title: string;
   bannerUrl: string;
   adsCount: number;
-  isBannerLoading: boolean;
+  isGameCardLoading: boolean;
 }
 
 export type FetchGameCardsResponseProps = Array<

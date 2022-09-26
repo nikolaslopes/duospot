@@ -10,7 +10,7 @@ export const GameCard = ({
   title,
   bannerUrl,
   adsCount,
-  isBannerLoading,
+  isGameCardLoading,
   ...rest
 }: IGameCard) => {
   return (
