@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { THEME } from "../../assets/theme";
+import { THEME } from "../../../../assets/theme/index";
 
 import { IDuoInfo } from "./types";
 

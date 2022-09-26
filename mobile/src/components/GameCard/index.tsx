@@ -5,25 +5,29 @@ import { IGameCard } from "./types";
 
 import { THEME } from "../../assets/theme";
 import { styles } from "./styles";
+import { Loading } from "../Loading";
 
-export const GameCard = ({
-  title,
-  bannerUrl,
-  adsCount,
-  isBannerLoading,
-  ...rest
-}: IGameCard) => {
+export const GameCard = ({ data, isGameCardLoading, ...rest }: IGameCard) => {
   return (
-    <TouchableOpacity style={styles.container} {...rest}>
-      <ImageBackground style={styles.cover} source={{ uri: bannerUrl }}>
-        <LinearGradient colors={THEME.COLORS.FOOTER} style={styles.footer}>
-          <Text style={styles.name}>{title}</Text>
+    <>
+      {isGameCardLoading ? (
+        <Loading />
+      ) : (
+        <TouchableOpacity style={styles.container} {...rest}>
+          <ImageBackground
+            style={styles.cover}
+            source={{ uri: data.bannerUrl }}
+          >
+            <LinearGradient colors={THEME.COLORS.FOOTER} style={styles.footer}>
+              <Text style={styles.name}>{data.title}</Text>
 
-          <Text style={styles.ads}>
-            {adsCount === 0 ? 0 : adsCount} anúncios
-          </Text>
-        </LinearGradient>
-      </ImageBackground>
-    </TouchableOpacity>
+              <Text style={styles.ads}>
+                {data._count.ads === 0 ? 0 : data._count.ads} anúncios
+              </Text>
+            </LinearGradient>
+          </ImageBackground>
+        </TouchableOpacity>
+      )}
+    </>
   );
 };

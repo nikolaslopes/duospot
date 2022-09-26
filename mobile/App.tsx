@@ -11,6 +11,8 @@ import { Routes } from "./src/routes";
 
 import { Background } from "./src/components/Background";
 import { Loading } from "./src/components/Loading";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./src/services/queryClient";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,14 +23,16 @@ export default function App() {
   });
 
   return (
-    <Background>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
+    <QueryClientProvider client={queryClient}>
+      <Background>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
 
-      {fontsLoaded ? <Routes /> : <Loading />}
-    </Background>
+        {fontsLoaded ? <Routes /> : <Loading />}
+      </Background>
+    </QueryClientProvider>
   );
 }

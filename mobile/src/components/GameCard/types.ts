@@ -1,9 +1,8 @@
 import { TouchableOpacityProps } from "react-native";
 
-import { GameCardProps } from "../../types/gameCard";
+import { GameProps } from "../../types/games";
 
-export type IGameCard = Pick<
-  GameCardProps,
-  "title" | "bannerUrl" | "adsCount" | "isBannerLoading"
-> &
-  TouchableOpacityProps;
+export interface IGameCard extends TouchableOpacityProps {
+  data: GameProps;
+  isGameCardLoading: boolean;
+}
