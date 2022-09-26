@@ -1,16 +1,12 @@
 import { MouseEvent, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-import { CardGameProps } from "../../types/gameBanner";
 import { ImageSkeleton } from "../Loaders/ImageSkeleton";
 import { TextSkeleton } from "../Loaders/TextSkeleton";
 
-export const GameBanner = ({
-  bannerUrl,
-  title,
-  adsCount,
-  isBannerLoading,
-}: CardGameProps) => {
+import { IGameCard } from "./types";
+
+export const GameCard = ({ data, isGameCardLoading }: IGameCard) => {
   const boxRef = useRef(null);
 
   useEffect(() => {
@@ -45,16 +41,20 @@ export const GameBanner = ({
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >
-      {isBannerLoading ? <ImageSkeleton /> : <img src={bannerUrl} alt="" />}
+      {isGameCardLoading ? (
+        <ImageSkeleton />
+      ) : (
+        <img src={data.bannerUrl} alt="" />
+      )}
 
       <div className="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0">
-        {isBannerLoading ? (
+        {isGameCardLoading ? (
           <TextSkeleton />
         ) : (
           <>
-            <strong className="font-bold text-white block">{title}</strong>
+            <strong className="font-bold text-white block">{data.title}</strong>
             <span className="text-zinc-300 text-sm block">
-              {adsCount === 0 ? 0 : adsCount} anúncios
+              {data._count.ads === 0 ? 0 : data._count.ads} anúncios
             </span>
           </>
         )}

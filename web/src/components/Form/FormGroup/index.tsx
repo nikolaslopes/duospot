@@ -1,5 +1,5 @@
-import { FormGroupProps } from "./types";
+import { IFormGroup } from "./types";
 
-export const FormGroup = ({ children }: FormGroupProps) => {
+export const FormGroup = ({ children }: IFormGroup) => {
   return <div className="flex flex-col gap-2 flex-1">{children}</div>;
 };

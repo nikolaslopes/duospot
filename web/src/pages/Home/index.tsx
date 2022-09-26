@@ -1,12 +1,8 @@
-import * as Dialog from "@radix-ui/react-dialog";
+import { useGamesData } from "../../services/hooks/useGames";
 
-import { useGamesData } from "../../hooks/useGames";
-import { GameBanner } from "../../components/GameBanner";
+import { GameCard } from "../../components/GameCard";
 import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
 import { BoxAnimated } from "../../components/Animations/BoxAnimated";
-
-import logoImg from "../../assets/logo.svg";
-import { GameController } from "phosphor-react";
 import { Input } from "../../components/Form/Input";
 import { FormGroup } from "../../components/Form/FormGroup";
 import { Label } from "../../components/Form/Label";
@@ -15,9 +11,11 @@ import { ButtonDay } from "../../components/Form/ButtonDay";
 import { ButtonAction } from "../../components/Form/ButtonAction";
 import { Modal } from "../../components/Modal";
 
+import logoImg from "../../assets/logo.svg";
+
 export const Home = () => {
   const gamesQuery = useGamesData();
-  const data = gamesQuery.data;
+  const games = gamesQuery.data;
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
@@ -34,13 +32,11 @@ export const Home = () => {
       </BoxAnimated>
 
       <section className="grid grid-cols-6 gap-6 mt-16">
-        {data?.map((game) => (
-          <GameBanner
+        {games?.map((game) => (
+          <GameCard
             key={game.id}
-            title={game.title}
-            bannerUrl={game.bannerUrl}
-            adsCount={game._count.ads}
-            isBannerLoading={gamesQuery.isLoading}
+            data={game}
+            isGameCardLoading={gamesQuery.isLoading}
           />
         ))}
       </section>
