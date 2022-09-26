@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { IDuoCard } from "./types";
 
 import { Button } from "../Button";
-import { DuoInfo } from "../DuoInfo";
+import { DuoInfo } from "./components/DuoInfo";
 
 import { THEME } from "../../assets/theme";
 import { styles } from "./styles";
