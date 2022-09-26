@@ -1,7 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { ModalProps } from "./types";
 
-export const Modal = ({ triggerComponent, title, children }: ModalProps) => {
+import { IModal } from "./types";
+
+export const Modal = ({ triggerComponent, title, children }: IModal) => {
   return (
     <Dialog.Root>
       {triggerComponent}

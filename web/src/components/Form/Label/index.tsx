@@ -1,6 +1,6 @@
-import { LabelProps } from "./types";
+import { ILabel } from "./types";
 
-export const Label = ({ title, ...rest }: LabelProps) => {
+export const Label = ({ title, ...rest }: ILabel) => {
   return (
     <label {...rest} className="semibold">
       {title}

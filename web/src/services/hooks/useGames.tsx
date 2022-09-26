@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { CardGamesResponseData } from "../types/gameBanner";
-import { api } from "../services/api";
+import { FetchGamesResponseProps } from "../../types/games";
+import { api } from "../api";
 
 export const fetchGames = async () => {
   const response = await api.get("/games");
-  const data: CardGamesResponseData = response.data;
+  const data: FetchGamesResponseProps = response.data;
 
   return data;
 };

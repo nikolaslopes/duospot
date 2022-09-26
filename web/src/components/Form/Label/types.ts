@@ -1,5 +1,5 @@
 import { LabelHTMLAttributes } from "react";
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface ILabel extends LabelHTMLAttributes<HTMLLabelElement> {
   title: string;
 }
