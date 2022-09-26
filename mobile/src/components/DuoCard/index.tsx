@@ -1,14 +1,14 @@
 import { View } from "react-native";
 
-import { DuoProps } from "../../types/duo";
+import { IDuoCard } from "./types";
 
+import { Button } from "../Button";
 import { DuoInfo } from "../DuoInfo";
 
 import { THEME } from "../../assets/theme";
 import { styles } from "./styles";
-import { Button } from "../Button";
 
-export const DuoCard = ({ data }: DuoProps) => {
+export const DuoCard = ({ data }: IDuoCard) => {
   return (
     <View style={styles.container}>
       <DuoInfo label="Nome" value={data.name} />

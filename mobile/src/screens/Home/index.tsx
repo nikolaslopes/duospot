@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
 import { Image, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
-import { IGame } from "../../types/game";
-import { useGames } from "../../services/hooks/useGames";
-
 import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
 import { GameCard } from "../../components/GameCard";
+
+import { IGame } from "../Game/types";
+import { useGames } from "../../services/hooks/useGames";
 
 import { styles } from "./styles";
 import logoImg from "../../assets/images/logo-nlw-esports.png";
@@ -38,9 +37,7 @@ export const Home = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <GameCard
-              title={item.title}
-              bannerUrl={item.bannerUrl}
-              adsCount={item._count.ads}
+              data={item}
               isGameCardLoading={gamesQuery.isLoading}
               onPress={() =>
                 handleOpenGame({

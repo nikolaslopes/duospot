@@ -1,4 +1,4 @@
-export interface FetchDuoResponseProps {
+export type AdsProps = {
   id: string;
   name: string;
   hourEnd: string;
@@ -6,9 +6,6 @@ export interface FetchDuoResponseProps {
   useVoiceChannel: boolean;
   weekDays: Array<string>;
   yearsPlaying: number;
-}
+};
 
-export interface DuoProps {
-  data: FetchDuoResponseProps;
-  isLoading?: boolean;
-}
+export type FetchAdsResponseProps = Array<AdsProps>;

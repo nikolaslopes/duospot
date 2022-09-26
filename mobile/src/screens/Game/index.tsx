@@ -7,37 +7,25 @@ import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
 import { DuoCard } from "../../components/DuoCard";
 
-import { IGame } from "../../types/game";
+import { useAds } from "../../services/hooks/useAds";
+import { IGame } from "./types";
 
 import { THEME } from "../../assets/theme";
 import { styles } from "./styles";
 import logoImg from "../../assets/images/logo-nlw-esports.png";
-import React, { useEffect, useState } from "react";
-import { FetchDuoResponseProps } from "../../types/duo";
 
 export const Game = () => {
-  const [duos, setDuos] = useState<FetchDuoResponseProps[]>([]);
-
   const navigation = useNavigation();
 
   const route = useRoute();
   const game = route.params as IGame;
 
+  const adsQuery = useAds(game.id);
+  const ads = adsQuery.data;
+
   function handleGoBack() {
     navigation.goBack();
   }
-
-  async function fetchAds() {
-    const response = await fetch(`http://127.0.0.1:3333/games/${game.id}/ads`);
-    const data: FetchDuoResponseProps[] = await response.json();
-
-    console.log(data);
-    setDuos(data);
-  }
-
-  useEffect(() => {
-    fetchAds();
-  }, []);
 
   return (
     <Background>
@@ -65,14 +53,14 @@ export const Game = () => {
         <Heading title={game.title} subtitle="Conecte-se e comece a jogar!" />
 
         <FlatList
-          data={duos}
+          data={ads}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <DuoCard data={item} />}
           horizontal
           showsHorizontalScrollIndicator={false}
           style={styles.containerList}
           contentContainerStyle={[
-            duos.length > 0 ? styles.contentList : styles.emptyListContent,
+            ads?.length ? styles.contentList : styles.emptyListContent,
           ]}
           ListEmptyComponent={() => (
             <Text style={styles.emptyListText}>
