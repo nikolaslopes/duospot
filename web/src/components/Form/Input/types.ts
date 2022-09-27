@@ -5,5 +5,5 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {}
 
 export interface ISelect extends SelectHTMLAttributes<HTMLSelectElement> {
   initialValue: string;
-  optionsValue: Array<GameProps> | undefined;
+  optionsValue: Array<Pick<GameProps, "id" | "title">> | undefined;
 }
