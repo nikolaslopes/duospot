@@ -4,9 +4,10 @@ export const Select = ({ initialValue, optionsValue, ...rest }: ISelect) => {
   return (
     <select
       className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500"
+      defaultValue=""
       {...rest}
     >
-      <option disabled selected value="">
+      <option disabled value="">
         {initialValue}
       </option>
 

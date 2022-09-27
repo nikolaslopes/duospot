@@ -8,7 +8,7 @@ import { Checkbox } from "../../components/Form/Input/Checkbox";
 import { FormGroup } from "../../components/Form/FormGroup";
 import { Label } from "../../components/Form/Label";
 import { weekDays } from "../../utils/mocks/weekDays";
-import { ButtonDay } from "../../components/Form/ButtonDay";
+import { DaysChoice } from "../../components/Form/DaysChoice";
 import { ButtonAction } from "../../components/Form/ButtonAction";
 import { Modal } from "../../components/Modal";
 
@@ -85,16 +85,8 @@ export const Home = () => {
           <div className="flex gap-6">
             <FormGroup>
               <Label htmlFor="weekDays" title="Quando costuma jogar?" />
-              <div className="grid grid-cols-4 gap-2">
-                {weekDays.map((weekDay) => (
-                  <ButtonDay
-                    key={weekDay.title}
-                    title={weekDay.title}
-                    text={weekDay.text}
-                    value={weekDay.value}
-                  />
-                ))}
-              </div>
+
+              <DaysChoice weekDays={weekDays} />
             </FormGroup>
 
             <FormGroup>
