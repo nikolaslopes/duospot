@@ -4,6 +4,7 @@ import { GameCard } from "../../components/GameCard";
 import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
 import { BoxAnimated } from "../../components/Animations/BoxAnimated";
 import { TextField } from "../../components/Form/Input/TextField";
+import { Checkbox } from "../../components/Form/Input/Checkbox";
 import { FormGroup } from "../../components/Form/FormGroup";
 import { Label } from "../../components/Form/Label";
 import { weekDays } from "../../utils/mocks/weekDays";
@@ -12,7 +13,6 @@ import { ButtonAction } from "../../components/Form/ButtonAction";
 import { Modal } from "../../components/Modal";
 
 import logoImg from "../../assets/logo.svg";
-import { Select } from "../../components/Form/Input/Select";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
@@ -106,7 +106,7 @@ export const Home = () => {
           </div>
 
           <div className="mt-2 flex items-center gap-2 text-sm">
-            <Select />
+            <Checkbox />
             Costumo me conectar ao chat de voz
           </div>
 
