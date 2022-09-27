@@ -85,7 +85,6 @@ export const Home = () => {
           <div className="flex gap-6">
             <FormGroup>
               <Label htmlFor="weekDays" title="Quando costuma jogar?" />
-
               <div className="grid grid-cols-4 gap-2">
                 {weekDays.map((weekDay) => (
                   <ButtonDay

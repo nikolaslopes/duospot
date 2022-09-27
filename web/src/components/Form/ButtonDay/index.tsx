@@ -1,13 +1,12 @@
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { ButtonDayProps } from "./types";
+import { IButtonDay } from "./types";
 
-export const ButtonDay = ({ title, value, text }: ButtonDayProps) => {
+export const ButtonDay = ({ title, value, text }: IButtonDay) => {
   return (
     <ToggleGroup.Root type="multiple">
       <ToggleGroup.Item
         value={value}
         title={title}
-        type="button"
         className="w-8 h-8 bg-zinc-900 rounded"
       >
         {text}
