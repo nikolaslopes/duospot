@@ -85,13 +85,13 @@ export const Home = () => {
           <div className="flex gap-6">
             <FormGroup>
               <Label htmlFor="weekDays" title="Quando costuma jogar?" />
-
               <div className="grid grid-cols-4 gap-2">
                 {weekDays.map((weekDay) => (
                   <ButtonDay
                     key={weekDay.title}
                     title={weekDay.title}
                     text={weekDay.text}
+                    value={weekDay.value}
                   />
                 ))}
               </div>
@@ -113,7 +113,6 @@ export const Home = () => {
 
           <footer className="mt-4 flex justify-end gap-4">
             <ButtonAction variant="gray" title="Cancelar" />
-
             <ButtonAction variant="purple" title="Encontrar duo" />
           </footer>
         </form>
