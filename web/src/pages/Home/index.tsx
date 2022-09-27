@@ -3,7 +3,7 @@ import { useGamesData } from "../../services/hooks/useGames";
 import { GameCard } from "../../components/GameCard";
 import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
 import { BoxAnimated } from "../../components/Animations/BoxAnimated";
-import { Input } from "../../components/Form/Input";
+import { TextField } from "../../components/Form/Input/TextField";
 import { FormGroup } from "../../components/Form/FormGroup";
 import { Label } from "../../components/Form/Label";
 import { weekDays } from "../../utils/mocks/weekDays";
@@ -12,6 +12,7 @@ import { ButtonAction } from "../../components/Form/ButtonAction";
 import { Modal } from "../../components/Modal";
 
 import logoImg from "../../assets/logo.svg";
+import { Select } from "../../components/Form/Input/Select";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
@@ -48,18 +49,26 @@ export const Home = () => {
         <form className="mt-8 flex flex-col gap-4">
           <FormGroup>
             <Label htmlFor="game" title="Qual o game?" />
-            <Input id="game" placeholder="Selecione o game que deseja jogar" />
+            <TextField
+              id="game"
+              type="text"
+              placeholder="Selecione o game que deseja jogar"
+            />
           </FormGroup>
 
           <FormGroup>
             <Label htmlFor="nickname" title="Qual o game?" />
-            <Input id="nickname" placeholder="Como te chamam dentro do game?" />
+            <TextField
+              id="nickname"
+              type="text"
+              placeholder="Como te chamam dentro do game?"
+            />
           </FormGroup>
 
           <div className="grid grid-cols-2 gap-6">
             <FormGroup>
               <Label htmlFor="yearsPlaying" title="Joga há quantos anos?" />
-              <Input
+              <TextField
                 id="yearsPlaying"
                 type="number"
                 placeholder="Tudo bem ser ZERO"
@@ -68,7 +77,7 @@ export const Home = () => {
 
             <FormGroup>
               <Label htmlFor="discord" title="Qual seu Discord?" />
-              <Input id="discord" type="text" placeholder="Usuario#000" />
+              <TextField id="discord" type="text" placeholder="Usuario#000" />
             </FormGroup>
           </div>
 
@@ -90,14 +99,14 @@ export const Home = () => {
             <FormGroup>
               <Label htmlFor="hourStart" title="Qual horário do dia?" />
               <div className="grid grid-cols-2 gap-2">
-                <Input id="hourStart" type="time" placeholder="De" />
-                <Input id="hourEnd" type="time" placeholder="Até" />
+                <TextField id="hourStart" type="time" placeholder="De" />
+                <TextField id="hourEnd" type="time" placeholder="Até" />
               </div>
             </FormGroup>
           </div>
 
           <div className="mt-2 flex items-center gap-2 text-sm">
-            <Input id="checkbox" type="checkbox" />
+            <Select />
             Costumo me conectar ao chat de voz
           </div>
 
