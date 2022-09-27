@@ -1,12 +1,20 @@
-import * as Checkbox from "@radix-ui/react-checkbox";
-import { Check } from "phosphor-react";
+import { ISelect } from "./types";
 
-export const Select = () => {
+export const Select = ({ initialValue, optionsValue, ...rest }: ISelect) => {
   return (
-    <Checkbox.Root className="w-6 h-6 p-1 rounded bg-zinc-900">
-      <Checkbox.Indicator>
-        <Check className="w-4 h-4 text-emerald-400" />
-      </Checkbox.Indicator>
-    </Checkbox.Root>
+    <select
+      className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500"
+      {...rest}
+    >
+      <option disabled selected value="">
+        {initialValue}
+      </option>
+
+      {optionsValue?.map((optionValue) => (
+        <option key={optionValue.id} value={optionValue.id}>
+          {optionValue.title}
+        </option>
+      ))}
+    </select>
   );
 };

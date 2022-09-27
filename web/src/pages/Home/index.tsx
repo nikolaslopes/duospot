@@ -4,6 +4,7 @@ import { GameCard } from "../../components/GameCard";
 import { CreateNewAdBanner } from "../../components/CreateNewAdBanner";
 import { BoxAnimated } from "../../components/Animations/BoxAnimated";
 import { TextField } from "../../components/Form/Input/TextField";
+import { Checkbox } from "../../components/Form/Input/Checkbox";
 import { FormGroup } from "../../components/Form/FormGroup";
 import { Label } from "../../components/Form/Label";
 import { weekDays } from "../../utils/mocks/weekDays";
@@ -49,15 +50,15 @@ export const Home = () => {
         <form className="mt-8 flex flex-col gap-4">
           <FormGroup>
             <Label htmlFor="game" title="Qual o game?" />
-            <TextField
+            <Select
               id="game"
-              type="text"
-              placeholder="Selecione o game que deseja jogar"
+              initialValue="Selecione o game que deseja jogar"
+              optionsValue={games}
             />
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="nickname" title="Qual o game?" />
+            <Label htmlFor="nickname" title="Seu nome (ou nickname)" />
             <TextField
               id="nickname"
               type="text"
@@ -106,7 +107,7 @@ export const Home = () => {
           </div>
 
           <div className="mt-2 flex items-center gap-2 text-sm">
-            <Select />
+            <Checkbox />
             Costumo me conectar ao chat de voz
           </div>
 
