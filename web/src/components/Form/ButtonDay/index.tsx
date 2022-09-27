@@ -1,15 +1,17 @@
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { ButtonDayProps } from "./types";
 
-export const ButtonDay = ({ title, text }: ButtonDayProps) => {
+export const ButtonDay = ({ title, value, text }: ButtonDayProps) => {
   return (
-    <>
-      <button
+    <ToggleGroup.Root type="multiple">
+      <ToggleGroup.Item
+        value={value}
         title={title}
         type="button"
         className="w-8 h-8 bg-zinc-900 rounded"
       >
         {text}
-      </button>
+      </ToggleGroup.Item>
 
       <div
         id="tooltip-default"
@@ -18,6 +20,6 @@ export const ButtonDay = ({ title, text }: ButtonDayProps) => {
       >
         <div className="tooltip-arrow" data-popper-arrow></div>
       </div>
-    </>
+    </ToggleGroup.Root>
   );
 };

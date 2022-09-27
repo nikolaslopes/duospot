@@ -92,6 +92,7 @@ export const Home = () => {
                     key={weekDay.title}
                     title={weekDay.title}
                     text={weekDay.text}
+                    value={weekDay.value}
                   />
                 ))}
               </div>
@@ -113,7 +114,6 @@ export const Home = () => {
 
           <footer className="mt-4 flex justify-end gap-4">
             <ButtonAction variant="gray" title="Cancelar" />
-
             <ButtonAction variant="purple" title="Encontrar duo" />
           </footer>
         </form>
