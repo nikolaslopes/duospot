@@ -13,6 +13,7 @@ import { ButtonAction } from "../../components/Form/ButtonAction";
 import { Modal } from "../../components/Modal";
 
 import logoImg from "../../assets/logo.svg";
+import { Select } from "../../components/Form/Input/Select";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
@@ -49,15 +50,15 @@ export const Home = () => {
         <form className="mt-8 flex flex-col gap-4">
           <FormGroup>
             <Label htmlFor="game" title="Qual o game?" />
-            <TextField
+            <Select
               id="game"
-              type="text"
-              placeholder="Selecione o game que deseja jogar"
+              initialValue="Selecione o game que deseja jogar"
+              optionsValue={games}
             />
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="nickname" title="Qual o game?" />
+            <Label htmlFor="nickname" title="Seu nome (ou nickname)" />
             <TextField
               id="nickname"
               type="text"
