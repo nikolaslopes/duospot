@@ -7,17 +7,19 @@ import { TextField } from "../../components/Form/Input/TextField";
 import { Checkbox } from "../../components/Form/Input/Checkbox";
 import { FormGroup } from "../../components/Form/FormGroup";
 import { Label } from "../../components/Form/Label";
-import { weekDays } from "../../utils/mocks/weekDays";
 import { DaysChoice } from "../../components/Form/DaysChoice";
 import { ButtonAction } from "../../components/Form/ButtonAction";
 import { Modal } from "../../components/Modal";
 
 import logoImg from "../../assets/logo.svg";
 import { Select } from "../../components/Form/Input/Select";
+import { useState } from "react";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
   const games = gamesQuery.data;
+
+  const [weekDays, setWeekDays] = useState<Array<string>>([]);
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
@@ -86,7 +88,10 @@ export const Home = () => {
             <FormGroup>
               <Label htmlFor="weekDays" title="Quando costuma jogar?" />
 
-              <DaysChoice weekDays={weekDays} />
+              <DaysChoice
+                weekDays={weekDays}
+                onWeekDaysChange={(value) => setWeekDays(value)}
+              />
             </FormGroup>
 
             <FormGroup>
