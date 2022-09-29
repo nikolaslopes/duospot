@@ -2,18 +2,18 @@ import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { IDaysChoice } from "./types";
 
 export const DaysChoice = ({
-  weekDays,
-  weekDaysSelected,
+  weekDaysMock,
+  weekDaysSelectedValue,
   onWeekDaysChange,
 }: IDaysChoice) => {
   return (
     <ToggleGroup.Root
       type="multiple"
       className="grid grid-cols-4 gap-2"
+      value={weekDaysSelectedValue}
       onValueChange={(value) => onWeekDaysChange(value)}
-      // value={weekDaysSelected}
     >
-      {weekDays.map((weekDay) => (
+      {weekDaysMock.map((weekDay) => (
         <ToggleGroup.Item
           key={weekDay.value}
           value={weekDay.value}

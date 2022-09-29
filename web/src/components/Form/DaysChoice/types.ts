@@ -1,9 +1,9 @@
 export interface IDaysChoice {
-  weekDays: Array<{
+  weekDaysMock: Array<{
     value: string;
     title: string;
     text: string;
   }>;
-  weekDaysSelected: Array<string>;
+  weekDaysSelectedValue: Array<string>;
   onWeekDaysChange: (weekDaysSelected: Array<string>) => void;
 }
