@@ -14,17 +14,34 @@ import { Modal } from "../../components/Modal";
 import logoImg from "../../assets/logo.svg";
 import { Select } from "../../components/Form/Input/Select";
 import { FormEvent, useState } from "react";
+import { useCreateAd } from "../../services/hooks/useCreateAd";
+import { AdCreateDataProps, AdProps } from "../../types/ads";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
   const games = gamesQuery.data;
 
   const [weekDays, setWeekDays] = useState<Array<string>>([]);
+  const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   function handleSubmit(event: FormEvent) {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
+
+    console.log(data.name);
+
+    const payload = {
+      name: data.name,
+      yearsPlaying: data.yearsPlaying,
+      discord: data.discord,
+      weekDays: weekDays,
+      hourStart: data.hourStart,
+    };
+
+    useCreateAd();
   }
+
+  console.log(useVoiceChannel);
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
@@ -78,7 +95,7 @@ export const Home = () => {
               <Label htmlFor="yearsPlaying" title="Joga há quantos anos?" />
               <TextField
                 id="yearsPlaying"
-                type="number"
+                type="text"
                 placeholder="Tudo bem ser ZERO"
               />
             </FormGroup>
@@ -98,7 +115,6 @@ export const Home = () => {
                 onWeekDaysChange={(value) => setWeekDays(value)}
               />
             </FormGroup>
-
             <FormGroup>
               <Label htmlFor="hourStart" title="Qual horário do dia?" />
               <div className="grid grid-cols-2 gap-2">
@@ -109,7 +125,10 @@ export const Home = () => {
           </div>
 
           <label className="mt-2 flex items-center gap-2 text-sm">
-            <Checkbox />
+            <Checkbox
+              checked={useVoiceChannel}
+              onCheckboxChange={(value) => setUseVoiceChannel(value)}
+            />
             Costumo me conectar ao chat de voz
           </label>
 

@@ -7,3 +7,8 @@ export interface ISelect extends SelectHTMLAttributes<HTMLSelectElement> {
   initialValue: string;
   optionsValue: Array<Pick<GameProps, "id" | "title">> | undefined;
 }
+
+export interface ICheckbox {
+  checked: boolean;
+  onCheckboxChange: (value: boolean) => void;
+}
