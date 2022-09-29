@@ -22,11 +22,3 @@ export type AdCreateDataProps = Pick<
   | "hourEnd"
   | "useVoiceChannel"
 >;
-
-export type AdsProps = Array<
-  {
-    hourStart: number;
-    hourEnd: number;
-    weekDays: string;
-  } & Pick<AdProps, "id" | "name" | "useVoiceChannel" | "yearsPlaying">
->;

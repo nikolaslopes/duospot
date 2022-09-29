@@ -1,11 +1,10 @@
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 
 import { IDaysChoice } from "./types";
+
 import { weekDaysItems } from "../../../utils/mocks/weekDaysItems";
 
 export const DaysChoice = ({ weekDays, onWeekDaysChange }: IDaysChoice) => {
-  console.log(weekDays);
-  console.log(weekDays.includes("0"));
   return (
     <ToggleGroup.Root
       type="multiple"

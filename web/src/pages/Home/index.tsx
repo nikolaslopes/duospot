@@ -13,13 +13,18 @@ import { Modal } from "../../components/Modal";
 
 import logoImg from "../../assets/logo.svg";
 import { Select } from "../../components/Form/Input/Select";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
   const games = gamesQuery.data;
 
   const [weekDays, setWeekDays] = useState<Array<string>>([]);
+
+  function handleSubmit(event: FormEvent) {
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
+  }
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
@@ -49,7 +54,7 @@ export const Home = () => {
         triggerComponent={<CreateNewAdBanner />}
         title="Publique um anúncio"
       >
-        <form className="mt-8 flex flex-col gap-4">
+        <form className="mt-8 flex flex-col gap-4" onSubmit={handleSubmit}>
           <FormGroup>
             <Label htmlFor="game" title="Qual o game?" />
             <Select
@@ -98,15 +103,15 @@ export const Home = () => {
               <Label htmlFor="hourStart" title="Qual horário do dia?" />
               <div className="grid grid-cols-2 gap-2">
                 <TextField id="hourStart" type="time" placeholder="De" />
-                <TextField id="hourEnd" type="time" placeholder="Até" />
+                <TextField id="hourEnd" type="t ime" placeholder="Até" />
               </div>
             </FormGroup>
           </div>
 
-          <div className="mt-2 flex items-center gap-2 text-sm">
+          <label className="mt-2 flex items-center gap-2 text-sm">
             <Checkbox />
             Costumo me conectar ao chat de voz
-          </div>
+          </label>
 
           <footer className="mt-4 flex justify-end gap-4">
             <ButtonAction variant="gray" title="Cancelar" />
