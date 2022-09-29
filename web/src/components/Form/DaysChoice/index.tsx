@@ -4,6 +4,8 @@ import { IDaysChoice } from "./types";
 import { weekDaysItems } from "../../../utils/mocks/weekDaysItems";
 
 export const DaysChoice = ({ weekDays, onWeekDaysChange }: IDaysChoice) => {
+  console.log(weekDays);
+  console.log(weekDays.includes("0"));
   return (
     <ToggleGroup.Root
       type="multiple"
@@ -16,7 +18,11 @@ export const DaysChoice = ({ weekDays, onWeekDaysChange }: IDaysChoice) => {
           key={weekDayItem.value}
           value={weekDayItem.value}
           title={weekDayItem.title}
-          className={`w-8 h-8 bg-zinc-900 rounded ${weekDaysSelectedValue}`}
+          className={`w-8 h-8 rounded ${
+            weekDays.includes(weekDayItem.value)
+              ? "bg-violet-500"
+              : "bg-zinc-900"
+          }`}
         >
           {weekDayItem.text}
         </ToggleGroup.Item>
