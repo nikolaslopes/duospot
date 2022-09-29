@@ -4,4 +4,6 @@ export interface IDaysChoice {
     title: string;
     text: string;
   }>;
+  weekDaysSelected: Array<string>;
+  onWeekDaysChange: (weekDaysSelected: Array<string>) => void;
 }

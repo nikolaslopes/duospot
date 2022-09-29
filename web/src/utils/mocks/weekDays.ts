@@ -1,4 +1,4 @@
-export const weekDays = [
+export const weekDaysMock = [
   {
     value: "0",
     title: "Domingo",
