@@ -1,7 +1,10 @@
 import { InputHTMLAttributes, SelectHTMLAttributes } from "react";
 import { GameProps } from "../../../types/games";
 
-export interface IInput extends InputHTMLAttributes<HTMLInputElement> {}
+export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  name: string;
+}
 
 export interface ISelect extends SelectHTMLAttributes<HTMLSelectElement> {
   initialValue: string;
