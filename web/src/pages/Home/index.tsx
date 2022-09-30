@@ -14,8 +14,8 @@ import { Modal } from "../../components/Modal";
 import logoImg from "../../assets/logo.svg";
 import { Select } from "../../components/Form/Input/Select";
 import { FormEvent, useState } from "react";
-import { useCreateAd } from "../../services/hooks/useCreateAd";
-import { AdCreateDataProps, AdProps } from "../../types/ads";
+
+import { api } from "../../services/api";
 
 export const Home = () => {
   const gamesQuery = useGamesData();
@@ -24,24 +24,37 @@ export const Home = () => {
   const [weekDays, setWeekDays] = useState<Array<string>>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    console.log(data.name);
+    if (
+      !data.name &&
+      !data.hourStart &&
+      !data.hourEnd &&
+      weekDays.length === 0
+    ) {
+      return;
+    }
 
     const payload = {
       name: data.name,
-      yearsPlaying: data.yearsPlaying,
+      yearsPlaying: Number(data.yearsPlaying),
       discord: data.discord,
-      weekDays: weekDays,
+      weekDays: weekDays.map(Number),
       hourStart: data.hourStart,
+      hourEnd: data.hourEnd,
+      useVoiceChannel: useVoiceChannel,
     };
 
-    useCreateAd();
+    try {
+      await api.post(`/games/${data.game}/ads`, payload);
+    } catch (err) {
+      console.log(err);
+    }
   }
-
-  console.log(useVoiceChannel);
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
@@ -76,15 +89,17 @@ export const Home = () => {
             <Label htmlFor="game" title="Qual o game?" />
             <Select
               id="game"
+              name="game"
               initialValue="Selecione o game que deseja jogar"
               optionsValue={games}
             />
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="nickname" title="Seu nome (ou nickname)" />
+            <Label htmlFor="name" title="Seu nome (ou nickname)" />
             <TextField
-              id="nickname"
+              id="name"
+              name="name"
               type="text"
               placeholder="Como te chamam dentro do game?"
             />
@@ -95,14 +110,20 @@ export const Home = () => {
               <Label htmlFor="yearsPlaying" title="Joga há quantos anos?" />
               <TextField
                 id="yearsPlaying"
-                type="text"
+                name="yearsPlaying"
+                type="number"
                 placeholder="Tudo bem ser ZERO"
               />
             </FormGroup>
 
             <FormGroup>
               <Label htmlFor="discord" title="Qual seu Discord?" />
-              <TextField id="discord" type="text" placeholder="Usuario#000" />
+              <TextField
+                id="discord"
+                name="discord"
+                type="text"
+                placeholder="Usuario#000"
+              />
             </FormGroup>
           </div>
 
@@ -118,8 +139,18 @@ export const Home = () => {
             <FormGroup>
               <Label htmlFor="hourStart" title="Qual horário do dia?" />
               <div className="grid grid-cols-2 gap-2">
-                <TextField id="hourStart" type="time" placeholder="De" />
-                <TextField id="hourEnd" type="t ime" placeholder="Até" />
+                <TextField
+                  id="hourStart"
+                  name="hourStart"
+                  type="time"
+                  placeholder="De"
+                />
+                <TextField
+                  id="hourEnd"
+                  name="hourEnd"
+                  type="time"
+                  placeholder="Até"
+                />
               </div>
             </FormGroup>
           </div>
@@ -133,8 +164,12 @@ export const Home = () => {
           </label>
 
           <footer className="mt-4 flex justify-end gap-4">
-            <ButtonAction variant="gray" title="Cancelar" />
-            <ButtonAction variant="purple" title="Encontrar duo" />
+            <ButtonAction type="button" variant="gray" title="Cancelar" />
+            <ButtonAction
+              type="submit"
+              variant="purple"
+              title="Encontrar duo"
+            />
           </footer>
         </form>
       </Modal>
